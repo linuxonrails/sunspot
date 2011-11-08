@@ -61,7 +61,7 @@ module Sunspot
 
       def solr_docs
         @hits ||=if solr_response && solr_response['docs']
-          collection_paginate(solr_response['docs'])
+          paginate_collection(solr_response['docs'])
         end
       end
 
