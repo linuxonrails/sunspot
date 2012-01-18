@@ -113,6 +113,13 @@ module Sunspot
       def query_time
         @query_time ||= solr_response_header['QTime']
       end
+
+      def raw_solr_docs
+        @hits ||=if solr_response && solr_response['docs']
+          paginate_collection(solr_response['docs'])
+        end
+      end
+
   
       # 
       # Get the facet object for the given name. `name` can either be the name
